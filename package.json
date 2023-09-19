@@ -1,0 +1,39 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "hello",
+  "main": "index.js",
+  "scripts": {
+   
+    "dev": "nodemon --exec babel-node ./src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+   
+  },
+  "repository": {
+    "type": "git",
+    "dev": "nodemon --exec babel-node ./src/index.js",
+    "url": "git+https://github.com/joviabebeto/frontend.git"
+  },
+  "author": "Brenda",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joviabebeto/frontend/issues"
+  },
+  "homepage": "https://github.com/joviabebeto/frontend#readme",
+  "dependencies": {
+    "@babel/cli": "^7.22.10",
+    "@babel/node": "^7.22.10",
+    "@babel/plugin-transform-runtime": "^7.22.10",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.22.10",
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-validator": "^7.0.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^7.4.4",
+    "nodemailer": "^6.9.5"
+  }
+}
+
