@@ -25,7 +25,7 @@ class NewsController {
 
 
   static async getAllNews(req, res) {
-    const news = await News.find();
+    const news = await news.find();
     try {
       if (!news) {
         return errorResponse(res, 401, `No news Found`);
