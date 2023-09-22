@@ -1,4 +1,4 @@
-import express from "express";
+import express from "express"
 import userRoutes from './userRoutes'
 import messageRoutes from './messageRoutes'
 import newsRoutes from './newsRoutes'
