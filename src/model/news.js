@@ -23,6 +23,10 @@ const NewsSchema = new mongoose.Schema({
     type: Date,
     default: Date.now(),
   },
+  category:{
+    type:mongoose.Schema.Types.ObjectId,
+    ref:"Category",
+  },
   likes: [
     {
       type: mongoose.Schema.Types.ObjectId,
@@ -46,6 +50,9 @@ NewsSchema.pre(/^find/, function (next) {
   this.populate({
     path: "Comment",
     select: "comment postedAt",
+  }).populate({
+    path:"category",
+    select:"categoryName",
   });
   next();
 });

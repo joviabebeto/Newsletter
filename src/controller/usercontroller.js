@@ -36,19 +36,19 @@ class UserController {
     }
   }
   static async login(req, res) {
-    //take data from body
+    
     const { email, password } = req.body;
-    //verify if email exist
+
     const user = await User.findOne({ email });
     if (!user) {
       return errorResponse(res, 401, `Invalid email or password`);
     } else {
-      //verify password
+     
       const comparePassword = bcrypt.compareSync(password, user.password);
       if (!comparePassword) {
         return errorResponse(res, 401, `Invalid email or password`);
       } else {
-        //generate a token
+     
         const token = jwt.sign({ user: user }, process.env.SECRET_KEY, {
           expiresIn: "1d",
         });
