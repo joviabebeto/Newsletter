@@ -35,7 +35,7 @@ class NewsController {
     if (!searchCategoryNews) {
       return errorResponse(res, 401, `no data provided in params`);
     }
-    const news = await news.find();
+    const news = await News.find();
     const result = news.filter((x) => {
       return x.category.categoryName
         .toUpperCase()
@@ -55,7 +55,7 @@ class NewsController {
 
  
   static async getAllNews(req, res) {
-    const news = await news.find();
+    const news = await News.find();
     try {
       if (!news) {
         return errorResponse(res, 401, `No news Found`);
@@ -70,7 +70,7 @@ class NewsController {
 
   static async updateNews(req, res) {
     const { id } = req.params;
-    const news = await news.findByIdAndUpdate({ _id: id }, req.body, {
+    const news = await News.findByIdAndUpdate({ _id: id }, req.body, {
       new: true,
     });
     try {
@@ -88,7 +88,7 @@ class NewsController {
 
   static async getOneNews(req, res) {
     const { id } = req.params;
-    const news = await news.findOne({ _id: id });
+    const news = await News.findOne({ _id: id });
     try {
       if (!news) {
         return errorResponse(res, 401, `news with id ${id} not found`);
@@ -105,14 +105,14 @@ class NewsController {
     }
   }
   static async deleteAllNews(req, res) {
-    const news = await news.deleteMany();
+    const news = await News.deleteMany();
     return successResponse(res, 200, "alll news deleted", news);
   }
   static async like(req, res) {
   
     const newsId = req.params.id;
     
-    const news = await news.findById({ _id: newsId });
+    const news = await News.findById({ _id: newsId });
     if (!news) {
       return errorResponse(res, 401, `News not found`);
     } else {
@@ -142,7 +142,7 @@ class NewsController {
   }
   static async dislike(req, res) {
     const newsId = req.params.id;
-    const news = await news.findById({ _id: newsId });
+    const news = await News.findById({ _id: newsId });
     if (!news) {
       return errorResponse(res, 401, `News not found`);
     } else {
@@ -165,7 +165,7 @@ class NewsController {
   }
   static async deleteOneNews(req, res) {
     const id = req.params.id;
-    const news = await news.findByIdAndDelete({ _id: id });
+    const news = await News.findByIdAndDelete({ _id: id });
     if (!news) {
       return errorResponse(res, 401, `news with id ${id} not found`);
     } else {
