@@ -60,7 +60,7 @@ class NewsController {
       if (!news) {
         return errorResponse(res, 401, `No news Found`);
       } else {
-        return successResponse(res, 200, `News ${news.length} found`, news);
+        return successResponse(res, 200, `News ${ news.length} found`,news);
       }
     } catch (error) {
       return errorResponse(res, 404, error);
@@ -87,23 +87,19 @@ class NewsController {
  
 
   static async getOneNews(req, res) {
-    const { id } = req.params;
-    const news = await News.findOne({ _id: id });
+   const id = req.params.id
+   const news = await News.findById(id)
+  
     try {
       if (!news) {
         return errorResponse(res, 401, `news with id ${id} not found`);
       } else {
-        return successResponse(
-          res,
-          200,
-          `news successfuly retrieved with ${news.comment.length} comments`,
-          news
-        );
+        return successResponse(res,200,`news retrived`,news)
       }
     } catch (error) {
       return errorResponse(res, 404, error);
     }
-  }
+   }
   static async deleteAllNews(req, res) {
     const news = await News.deleteMany();
     return successResponse(res, 200, "alll news deleted", news);

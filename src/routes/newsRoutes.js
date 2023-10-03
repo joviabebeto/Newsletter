@@ -3,7 +3,7 @@ import NewsController from "../controller/newsController";
 import VerifyAccess from "../middlewares/veryfyAccess";
 
 const router = express.Router();
-router.post("/", VerifyAccess("admin"), NewsController.createNews);
+router.post("/", NewsController.createNews);
 router.get("/", NewsController.getAllNews);
 router.patch("/:id", VerifyAccess("admin"), NewsController.updateNews);
 router.get("/:id", NewsController.getOneNews);
