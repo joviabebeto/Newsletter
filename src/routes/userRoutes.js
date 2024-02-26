@@ -7,11 +7,7 @@ import VerifyAccess from "../middlewares/veryfyAccess";
 const router = express.Router();
 
 router.post(
-  "/",
-  DataChequer.userRegisterIsEmpty,
-  DataChequer.emailExist,
-  Validator.userAccountRule(),
-  Validator.inputValidator,
+  "/", DataChequer.userRegisterIsEmpty,DataChequer.emailExist,Validator.userAccountRule(),Validator.inputValidator,
   userController.createUser
 );
 router.get("/", VerifyAccess("admin"), userController.getAllUsers);
